@@ -13,7 +13,81 @@ body {
 .calculator {
     background-color: #333;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);body {
+    font-family: Arial, sans-serif;
+    background-image: url('calculator-background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    background-color: #333;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.calculator h1 {
+    font-size: 24px;
+    color: #f0f0f0;
+    margin: 0 0 20px;
+}
+
+.calculator #result {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 24px;
+    border: none;
+    border-bottom: 2px solid #f0f0f0;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+.calculator .button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculator .numbers {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.calculator .operators {
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.calculator .btn {
+    width: 23%;
+    padding: 10px;
+    margin: 5px;
+    font-size: 18px;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    background-color: #444;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+.calculator .btn:hover {
+    background-color: #555;
+}
+
     padding: 20px;
     text-align: center;
     color: #fff;
