@@ -1,0 +1,43 @@
+.Title {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 210px;
+    color: rgb(238, 20, 20);
+    border: solid black 2px;
+}
+
+input[type="button"] {
+    background-color: green;
+    color: rgba(245, 241, 23, 0.966);
+    border: solid black 2px;
+    width: 100%
+}
+
+input[type="text"] {
+    background-color: white;
+    border: solid black 2px;
+    width: 100%
+}
+
+.m_body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("calc.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+input:hover {
+    background-color: white;
+    color: black;
+}
+
+table {
+    height: 30%;
+    border-radius: 10px;
+    border: 5px solid black;
+}
