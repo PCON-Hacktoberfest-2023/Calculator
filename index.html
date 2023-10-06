@@ -1,106 +1,132 @@
+<!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <script>
-        function display(val) {
-            document.getElementById("result").value += val;
+      let enterPressed = false;
+      let isCalculating = false;
+
+      function display(val) {
+        document.getElementById("result").value += val;
+        isCalculating = false;
+      }
+
+      function calculate() {
+        if (!isCalculating) {
+          var str = document.getElementById("result").value;
+          var ans = eval(str);
+          document.getElementById("result").value = ans;
+          isCalculating = true;
         }
-        function calcculate() {
-            var str = document.getElementById("result").value;
-            var ans = eval(str);
-            document.getElementById("result").value = ans;
+      }
+
+      function clearScreen() {
+        document.getElementById("result").value = "";
+        enterPressed = false;
+        isCalculating = false;
+      }
+
+      document.addEventListener("keydown", function (event) {
+        const key = event.key;
+
+        // Allow numbers, operators, decimal point
+        if (/[\d\+\-\/*\.]/.test(key)) {
+          display(key);
+          enterPressed = false;
+        } else if (key === "Backspace") {
+          let vic = document.getElementById("result").value;
+          document.getElementById("result").value = vic.slice(
+            0,
+            vic.length - 1
+          );
+        } else if (key === "Enter") {
+          // Handle Enter key as equals sign
+          if (!enterPressed) {
+            calculate();
+            enterPressed = true;
+          }
         }
-        function clear_screen() {
-            document.getElementById("result").value = "";
-        }
+      });
     </script>
 
-    <!---style starts here..........-->
     <style>
-        .Title {
-            margin-bottom: 10px;
-            text-align: center;
-            width: 210px;
-            color: rgb(238, 20, 20);
-            border: solid black 2px;
-        }
+      .Title {
+        margin-bottom: 10px;
+        text-align: center;
+        width: 210px;
+        color: rgb(238, 20, 20);
+        border: solid black 2px;
+      }
 
-        input[type="button"] {
-            background-color: green;
-            color: rgba(245, 241, 23, 0.966);
-            border: solid black 2px;
-            width: 100%
-        }
+      input[type="button"] {
+        background-color: green;
+        color: rgba(245, 241, 23, 0.966);
+        border: solid black 2px;
+        width: 100%;
+      }
 
-        input[type="text"] {
-            background-color: white;
-            border: solid black 2px;
-            width: 100%
-        }
+      input[type="text"] {
+        background-color: white;
+        border: solid black 2px;
+        width: 100%;
+      }
 
-        .m_body {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-image: url("calc.jpeg");
-            background-position: center;
-            background-repeat: no-repeat;
+      .m_body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url("calc.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-        }
+      input:hover {
+        background-color: white;
+        color: black;
+      }
 
-        input:hover {
-            background-color: white;
-            color: black;
-        }
-
-        table {
-            height: 30%;
-            border-radius: 10px;
-            border: 5px solid black;
-        }
+      table {
+        height: 30%;
+        border-radius: 10px;
+        border: 5px solid black;
+      }
     </style>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <div class="m_body">
-        <div class="Title">
-            Calculator
-        </div>
-        <table>
-            <tr>
-                <td colspan="3"><input type="text" id="result" /></td>
-                <td> <input type="button" value="c" onclick="clear_screen()" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="1" onclick="display('1')" /> </td>
-                <td><input type="button" value="2" onclick="display('2')" /> </td>
-                <td><input type="button" value="3" onclick="display('3')" /> </td>
-                <td><input type="button" value="/" onclick="display('/')" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="4" onclick="display('4')" /> </td>
-                <td><input type="button" value="5" onclick="display('5')" /> </td>
-                <td><input type="button" value="6" onclick="display('6')" /> </td>
-                <td><input type="button" value="-" onclick="display('-')" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="7" onclick="display('7')" /> </td>
-                <td><input type="button" value="8" onclick="display('8')" /> </td>
-                <td><input type="button" value="9" onclick="display('9')" /> </td>
-                <td><input type="button" value="+" onclick="display('+')" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="." onclick="display('.')" /> </td>
-                <td><input type="button" value="0" onclick="display('0')" /> </td>
-                <td><input type="button" value="=" onclick="calcculate()" /> </td>
-                <td><input type="button" value="*" onclick="display('*')" /> </td>
-            </tr>
-        </table>
+      <div class="Title">Calculator</div>
+      <table>
+        <tr>
+          <td colspan="3"><input readonly type="text" id="result" /></td>
+          <td><input type="button" value="c" onclick="clearScreen()" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="1" onclick="display('1')" /></td>
+          <td><input type="button" value="2" onclick="display('2')" /></td>
+          <td><input type="button" value="3" onclick="display('3')" /></td>
+          <td><input type="button" value="/" onclick="display('/')" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="4" onclick="display('4')" /></td>
+          <td><input type="button" value="5" onclick="display('5')" /></td>
+          <td><input type="button" value="6" onclick="display('6')" /></td>
+          <td><input type="button" value="-" onclick="display('-')" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="7" onclick="display('7')" /></td>
+          <td><input type="button" value="8" onclick="display('8')" /></td>
+          <td><input type="button" value="9" onclick="display('9')" /></td>
+          <td><input type="button" value="+" onclick="display('+')" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="." onclick="display('.')" /></td>
+          <td><input type="button" value="0" onclick="display('0')" /></td>
+          <td><input type="button" value="=" onclick="calculate()" /></td>
+          <td><input type="button" value="*" onclick="display('*')" /></td>
+        </tr>
+      </table>
     </div>
-</body>
-
+  </body>
 </html>
