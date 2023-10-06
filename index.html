@@ -1,119 +1,45 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <script>
-        function display(val) {
-            document.getElementById("result").value += val;
-        }
-        function calcculate() {
-            var str = document.getElementById("result").value;
-            var ans = eval(str);
-            document.getElementById("result").value = ans;
-        }
-        function clear_screen() {
-            document.getElementById("result").value = "";
-        }
-    </script>
 
-    <!---style starts here..........-->
-    <style>
-        body{
-            font-size: 2rem;
-        }
-        td{
-            height: 2rem;
-            width: 2rem;
-        }
-        td > input{
-            
-            padding: 50px;
-        }
-        .Title {
-            margin-bottom: 10px;
-            text-align: center;
-            width: 30vw;
-            color: rgb(238, 20, 20);
-            border: solid black 2px;
-        }
-
-        input[type="button"] {
-            background-color: green;
-            color: rgba(245, 241, 23, 0.966);
-            border: solid black 2px;
-            width: 100%
-        }
-
-        input[type="text"] {
-            background-color: white;
-            border: solid black 2px;
-            width: 100%
-        }
-
-        .m_body {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-position: center;
-            background-repeat: no-repeat;
-
-        }
-
-        input:hover {
-            background-color: white;
-            color: black;
-        }
-
-        table {
-            /* height: 70%;
-            width: 70%; */
-            border-radius: 10px;
-            border: 5px solid black;
-        }
-        #result{
-            font-size: 2rem;
-        }
-    </style>
-
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
 
 </head>
 
 <body>
-    <div class="m_body">
-        <div class="Title">
-            Calculator
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <input type="text" id="result" readonly>
+        <div class="button-container">
+            <div class="numbers">
+                <div class="btn" onclick="clearScreen()">C</div>
+                <div class="btn" onclick="backspace()">←</div>
+                <div class="btn" onclick="appendToResult('7')">7</div>
+                <div class="btn" onclick="appendToResult('8')">8</div>
+                <div class="btn" onclick="appendToResult('9')">9</div>
+                <div class="btn" onclick="appendToResult('4')">4</div>
+                <div class="btn" onclick="appendToResult('5')">5</div>
+                <div class="btn" onclick="appendToResult('6')">6</div>
+                <div class="btn" onclick="appendToResult('1')">1</div>
+                <div class="btn" onclick="appendToResult('2')">2</div>
+                <div class="btn" onclick="appendToResult('3')">3</div>
+                <div class="btn" onclick="appendToResult('.')">.</div>
+                <div class="btn" onclick="appendToResult('0')">0</div>
+            </div>
+            <div class="operators">
+                <div class="btn" onclick="appendToResult('/')">/</div>
+                <div class="btn" onclick="appendToResult('*')">*</div>
+                <div class="btn" onclick="appendToResult('-')">-</div>
+                <div class="btn" onclick="appendToResult('+')">+</div>
+                <div class="btn" onclick="calculatePercentage()">%</div>
+                <div class="btn" onclick="calculateSquareRoot()">√</div>
+                <div class="btn" onclick="calculateResult()">=</div>
+            </div>
         </div>
-        <table>
-            <tr>
-                <td colspan="3"><input type="text" id="result" /></td>
-                <td> <input type="button" value="c" onclick="clear_screen()" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="1" onclick="display('1')" /> </td>
-                <td><input type="button" value="2" onclick="display('2')" /> </td>
-                <td><input type="button" value="3" onclick="display('3')" /> </td>
-                <td><input type="button" value="/" onclick="display('/')" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="4" onclick="display('4')" /> </td>
-                <td><input type="button" value="5" onclick="display('5')" /> </td>
-                <td><input type="button" value="6" onclick="display('6')" /> </td>
-                <td><input type="button" value="-" onclick="display('-')" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="7" onclick="display('7')" /> </td>
-                <td><input type="button" value="8" onclick="display('8')" /> </td>
-                <td><input type="button" value="9" onclick="display('9')" /> </td>
-                <td><input type="button" value="+" onclick="display('+')" /> </td>
-            </tr>
-            <tr>
-                <td><input type="button" value="." onclick="display('.')" /> </td>
-                <td><input type="button" value="0" onclick="display('0')" /> </td>
-                <td><input type="button" value="=" onclick="calcculate()" /> </td>
-                <td><input type="button" value="*" onclick="display('*')" /> </td>
-            </tr>
-        </table>
     </div>
 </body>
 
